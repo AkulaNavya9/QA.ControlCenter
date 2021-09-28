@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ReadConfigFile {
-	// this method will rturn an object which only belongs to COnfig Detail
+	// this method will return an object which only belongs to COnfig Detail
 	public static ConfigDetails readconfigdetails() {
 
 		ConfigDetails configDetails = new ConfigDetails();
