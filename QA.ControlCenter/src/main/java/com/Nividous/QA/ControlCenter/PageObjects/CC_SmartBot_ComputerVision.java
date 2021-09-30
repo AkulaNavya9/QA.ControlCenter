@@ -6,37 +6,37 @@ import org.openqa.selenium.support.FindBy;
 public class CC_SmartBot_ComputerVision {
 
 	@FindBy(css = ".btn.btn-primary.activeBtn")
-	WebElement templates;
+	WebElement templatesBtn;
 	
 	@FindBy(css = "#btnAddTemplate")
-	WebElement AddTemplate;
+	WebElement addTemplateBtn;
 	
 	@FindBy(css = "#templateType")
-	WebElement TemplateType;
+	WebElement ddTemplateType;
 	
 	@FindBy(css = "#templateName")
-	WebElement TemplateName;
+	WebElement templateName;
 	
 	@FindBy(css = "#templateDesc")
-	WebElement TemplateDescription ;
+	WebElement templateDescription ;
 	
 	@FindBy(css = "#uploadedFile")
-	WebElement ChooseFile;
+	WebElement chooseFileBtn;
 	
 	@FindBy(xpath = "//input[@id='aui_3_4_0_1_790']")
-	WebElement Field;
+	WebElement field;
 	
 	@FindBy(xpath = "//span[@id='aui_3_4_0_1_822']")
-	WebElement isTableField;
+	WebElement isTableFieldcb;
 	
 	@FindBy(css = "#aui_3_4_0_1_822")
-	WebElement addButton;
+	WebElement addBtn;
 	
 	@FindBy(css = "#nextBtn")
-	WebElement nextButton;
+	WebElement nextBtn;
 	
 	@FindBy(css = "#cancelBtn")
-	WebElement cancelButton;
+	WebElement cancelBtn;
 	
 	@FindBy(css = "#Custom-ML-Model")
 	WebElement useModelYesCheckBox;
@@ -45,7 +45,7 @@ public class CC_SmartBot_ComputerVision {
 	WebElement useModelNoCheckBox;
 	
 	@FindBy(css = "#ModelNameOption") 
-	WebElement semiStructuredmodelName;
+	WebElement ddSemiStructuredmodelName;
 	
 	@FindBy(css = "#templateName")
 	WebElement semiStructuredtemplateName;
@@ -54,13 +54,13 @@ public class CC_SmartBot_ComputerVision {
 	WebElement semistructuredTemplateDesc;
 	
 	@FindBy(css = "#nextBtn")
-	WebElement semiStructuredSaveButton;
+	WebElement semiStructuredSaveBtn;
 	
 	@FindBy(css = "#cancelBtn")
-	WebElement semiStructuredCancelButton;
+	WebElement semiStructuredCancelBtn;
 	
 	@FindBy(css = "#ModelOption")
-	WebElement domainSpecificModelType;
+	WebElement ddDomainSpecificModelType;
 	
 	@FindBy(css = "#templateName")
 	WebElement domainSpecificTemplateName ;
@@ -69,10 +69,10 @@ public class CC_SmartBot_ComputerVision {
 	WebElement domianSpecificTemplateDecs;
 	
 	@FindBy(css = "#nextBtn")
-	WebElement domainSpecifixSaveButton;
+	WebElement domainSpecifixSaveBtn;
 	
 	@FindBy(css = "#cancelBtn")
-	WebElement domainSpecificCancelButton;
+	WebElement domainSpecificCancelBtn;
 	
 	@FindBy(css = "#templateName")
 	WebElement unstructuredTemplateName;
@@ -84,13 +84,13 @@ public class CC_SmartBot_ComputerVision {
 	WebElement unstructuredAddFieldName;
 	
 	@FindBy(css = "#aui_3_4_0_1_554")
-	WebElement unstructuredAddbButton;
+	WebElement unstructuredAddBtn;
 	
 	@FindBy(css = "#tagField")
 	WebElement tag;
 	
 	@FindBy(css = "#datatype")
-	WebElement dataTypeDrpDwn;
+	WebElement dddataType;
 	
 	@FindBy(css = "#pattern")
 	WebElement pattern;
@@ -105,16 +105,16 @@ public class CC_SmartBot_ComputerVision {
 	WebElement unstructredCancelButton;
 	
 	@FindBy(css = "#aui_3_4_0_1_448")
-	WebElement ModelsTabButton;
+	WebElement modelsTabBtn;
 	
 	@FindBy(css = "#aui_3_4_0_1_464")
-	WebElement RefreshButton;
+	WebElement refreshBtn;
 	
 	@FindBy(css = "#btnAddTemplate")
-	WebElement addModelButton;
+	WebElement addModelBtn;
 	
 	@FindBy(css = "#aui_3_4_0_1_530")
-	WebElement EntriesDrpDwn;
+	WebElement ddEntries;
 	
 	@FindBy(css = "#modelName")
 	WebElement modelDetails;
@@ -129,13 +129,13 @@ public class CC_SmartBot_ComputerVision {
 	WebElement entityName;
 	
 	@FindBy(css = "#aui_3_4_0_1_558")
-	WebElement addEntityButton;
+	WebElement addEntityBtn;
 	
 	@FindBy(css = "#cancelBtn")
-	WebElement modelCancelButton;
+	WebElement modelCancelBtn;
 	
 	@FindBy(css = "#nextBtn")
-	WebElement modelSaveButton;
+	WebElement modelSaveBtn;
 	
 	
 }
