@@ -6,49 +6,49 @@ import org.openqa.selenium.support.FindBy;
 public class CC_Robots_Vault {
 
 	@FindBy(id = "txtIdentifierFilter")
-	WebElement  Identifier;
+	WebElement  identifier;
 	
 	@FindBy(id = "applyFilterBtn")
-	WebElement  SearchButton;
+	WebElement  searchBtn;
 	
 	@FindBy(id = "resetFilter")
-	WebElement ResetButton ;
+	WebElement resetBtn ;
 	
 	@FindBy(id = "btnAddVaultRecord")
-	WebElement AddVaultRecord ;
+	WebElement addVaultRecord ;
 	
 	@FindBy(xpath = "//*[@id=\"cmbTemplate\"]")
-	WebElement SelectTemplateDrpDwn ;
+	WebElement ddSelectTemplate ;
 	
 	@FindBy(css = "#txtIdentifier")
 	WebElement recordDetailsIdentifier;
 	
 	@FindBy(xpath = "//*[@id=\"aui_3_4_0_1_1685\"]")
-	WebElement AddIDentifierButton ;
+	WebElement addIDentifierBtn ;
 	
 	@FindBy(xpath = "//*[@id=\"txt1Username\"]")
-	WebElement VaultRecordUsername ;
+	WebElement vaultRecordUsername ;
 	
 	@FindBy(xpath = "//*[@id=\"txt1Url\"]")
-	WebElement VaultRecordURL ;
+	WebElement vaultRecordURL ;
 	
 	@FindBy(xpath = "//*[@id=\"txt1Password\"]")
-	WebElement VaultRecordPassword ;
+	WebElement vaultRecordPassword ;
 	
 	@FindBy(xpath = "//*[@id=\"txt1Note\"]")
-	WebElement VaultRecordNote ;
+	WebElement vaultRecordNote ;
 	
 	@FindBy(xpath = "//*[@id=\"cmb1Bot\"]")
-	WebElement  VaultRecordBot;
+	WebElement  vaultRecordBot;
 	
 	@FindBy(id = "btnSaveWebEntry")
-	WebElement  SaveButton;
+	WebElement  saveBtn;
 	
 	@FindBy(id = "btnBackWebEntry")
-	WebElement  BackButton;
+	WebElement  backBtn;
 	
 	@FindBy(xpath = "//*[@id=\"aui_3_4_0_1_721\"]")
-	WebElement CloseButton ;
+	WebElement closeBtn ;
 	
 	
 

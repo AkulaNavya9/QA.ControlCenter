@@ -6,57 +6,57 @@ import org.openqa.selenium.support.FindBy;
 public class CC_Robots_Schedule {
 	
 	@FindBy(id = "showScheduler")
-	WebElement addScheduleButton ;
+	WebElement addScheduleBtn ;
 	
 	@FindBy(xpath = "//*[@id=\"cmbProcess\"]")
-	WebElement selectProcessdropdown;
+	WebElement ddSelectProcess;
 	
 	@FindBy(xpath = "//input[@class='form-control required requiredInputs']")
 	WebElement value;
 	
 	@FindBy(xpath = "//*[@id=\"preferredRobots\"]")
-	WebElement PreferredRobotDrpDwn;
+	WebElement ddPreferredRobot;
 	
 	@FindBy(id = "executeOnPreferredBot")
-	WebElement PreferredRobotTickBox;
+	WebElement cbPreferredRobot;
 	
 	@FindBy(xpath = "//*[@id=\"now\"]")
-	WebElement ScheduleNow;
+	WebElement scheduleNow;
 	
 	@FindBy(xpath = "//*[@id=\"minute\"]")
-	WebElement ScheduleMinute;
+	WebElement scheduleMinute;
 	
 	@FindBy(xpath = "//*[@id=\"once\"]")
-	WebElement ScheduleOnce;
+	WebElement scheduleOnce;
 	
 	@FindBy(xpath = "//*[@id=\"hour\"]")
-	WebElement ScheduleHourly;
+	WebElement scheduleHourly;
 	
 	@FindBy(xpath = "//*[@id=\"daily\"]")
-	WebElement ScheduleDaily;
+	WebElement scheduleDaily;
 	
 	@FindBy(xpath = "//*[@id=\"weekly\"]")
-	WebElement ScheduleWeekly;
+	WebElement scheduleWeekly;
 	
 	@FindBy(xpath = "//*[@id=\"monthly\"]")
-	WebElement ScheduleMonthly;
+	WebElement scheduleMonthly;
 	
 	@FindBy(id = "scheduleProcessButton")
-	WebElement ScheduleProcessButton;
+	WebElement scheduleProcessBtn;
 	
 	@FindBy(xpath = "//button[@id='aui_3_4_0_1_572']")
-	WebElement CancelButton;
+	WebElement cancelBtn;
 	
 	@FindBy(xpath = "//*[@id=\"cmbPriorities\"]")
-	WebElement PriorityDrpDwn;
+	WebElement ddPriority;
 	
 	@FindBy(xpath = "//*[@id=\"LogLevel\"]")
-	WebElement LogLevelDrpDwn;
+	WebElement ddLogLevel;
 	
 	@FindBy(xpath = "//*[@id=\"RetryCount\"]")
-	WebElement RetryCountDrpdwn;
+	WebElement ddRetryCount;
 	
 	@FindBy(id = "FailureReceipients")
-	WebElement AdditionalReciepients;
+	WebElement additionalReciepients;
 	
 }

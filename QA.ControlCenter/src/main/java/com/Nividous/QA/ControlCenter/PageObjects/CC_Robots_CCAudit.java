@@ -6,31 +6,31 @@ import org.openqa.selenium.support.FindBy;
 public class CC_Robots_CCAudit {
 
 	@FindBy(css = "#aui_3_4_0_1_690 > tr > td:nth-child(1) > a")
-	WebElement RobotName1;
+	WebElement robotName1;
 	
 	@FindBy ( css = "#registeredRobotsTableDiv")
-	WebElement RobotNameSort;
+	WebElement robotNameSort;
 	
 	
 	@FindBy ( css = "#aui_3_4_0_1_772")
-	WebElement IPAddressSort;
+	WebElement ipAddressSort;
 	
 	@FindBy ( css = "#aui_3_4_0_1_932")
-	WebElement Authorization;
+	WebElement authorization;
 	
 	@FindBy ( xpath = "//*[@id=\"aui_3_4_0_1_827\"]")
-	WebElement AccessDropdown;
+	WebElement ddAccess;
 	
 	
 	@FindBy ( id = "authTabAddPermBtn")
-	WebElement addPermissionButton;
+	WebElement addPermissionBtn;
 	
 	
 	@FindBy ( css = "#aui_3_4_0_1_892")
-	WebElement closeButton;
+	WebElement closeBtn;
 	
 	@FindBy ( id = "createViewSavebtn")
-	WebElement saveButton;
+	WebElement saveBtn;
 	
 	
 	
