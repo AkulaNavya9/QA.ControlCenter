@@ -137,5 +137,7 @@ public class CC_SmartBot_ComputerVision {
 	@FindBy(css = "#nextBtn")
 	WebElement modelSaveBtn;
 	
+	@FindBy(id = "createReport")
+	WebElement createReportBtn;
 	
 }
