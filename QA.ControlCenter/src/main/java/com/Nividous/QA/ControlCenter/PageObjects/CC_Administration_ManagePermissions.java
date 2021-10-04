@@ -20,20 +20,21 @@ public class CC_Administration_ManagePermissions {
 	@FindBy(id = "authTabAddPermBtn")
 	WebElement btnAdminManagePermisionsAddPerm;
 	
-	@FindBy(css = "span[class='filter-option pull-left']")
-	WebElement ddAdminManagePermisionsAddPerm;
-	
 	@FindBy(id = "saveAuthPermBtn")
 	WebElement btnAdminManagePermisionsSavePerm;
 	
 	@FindBy(id = "selectResType")
 	WebElement ddManagePermisionsPermset;
+	 
 	
+	//will need common method for this
 	Select sel = new Select(ddManagePermisionsPermset);
 	
 	
-	public void selPermission(String ele) {
-		sel.selectByValue(ele);
+	public void selPermission(String value) {
+		sel.selectByValue(value);
+		
+		
 		
 	}
 	
