@@ -15,7 +15,7 @@ public class CC_Home extends Base{
 	@FindBy(xpath = "//a[@title='My Tasks']/child::img[@alt='Page Icon']")
 	WebElement lblMenuddMyTasks;
 	
-	@FindBy(xpath = "//a[@href ='http://localhost:8080/group/rpa/robots']")
+	@FindBy(xpath = "//a[@href ='http://localhost:8080/group/rpa/robots']/child::img[@alt='Page Icon']")
 	WebElement lblMenuddRobot;
 	
 	@FindBy(css = "//a[@href = 'http://localhost:8080/group/rpa/robots']")
@@ -72,7 +72,6 @@ public class CC_Home extends Base{
 	@FindBy(css = "a[href ='/c/portal/logout']")
 	WebElement linkSignOut;
 	
-	
 	@FindBy(xpath = "//a[@title='Help']/child::img[@alt='Page Icon']")
 	WebElement lblMenuHelp;
 	
@@ -81,6 +80,8 @@ public class CC_Home extends Base{
 	
 	@FindBy(css = "a[href ='http://localhost:8080/admin-guide/']")
 	WebElement ddMenuHelpAdminGuide;
+	
+	
 	
 	
 }
