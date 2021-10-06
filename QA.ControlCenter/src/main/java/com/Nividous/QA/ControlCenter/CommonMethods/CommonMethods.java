@@ -2,8 +2,11 @@ package com.Nividous.QA.ControlCenter.CommonMethods;
 
 import org.openqa.selenium.WebDriver;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -13,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Select; 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,14 +31,14 @@ public class CommonMethods {
 	// import com.relevantcodes.extentreports.LogStatus;
 
 	/*
-	 * @author ChandraShekhar.G
+	 * @author Navya Akula
 	 *
 	 */
 
 	public WebDriver driver;
 	public ExtentTest reportsLogger;
 	public long DEFAULT_EXPLICIT_WAIT_TIME;
-	public Object LogStatus;
+	//public Object LogStatus;
 	public static ExtentReports reports;
 	public static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 	public static final ThreadLocal<ExtentTest> extentReport = new ThreadLocal<ExtentTest>();
