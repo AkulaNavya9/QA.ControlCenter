@@ -249,8 +249,11 @@ public class CommonMethods extends Base{
 
 	public void waitForElementToBePresent(By locator, long timeOutInSeconds) {
 		try {
-			(new WebDriverWait(this.getDriver(), timeOutInSeconds))
-					.until(ExpectedConditions.presenceOfElementLocated(locator));
+
+
+			(new WebDriverWait(this.driver, timeOutInSeconds))
+					.until(ExpectedConditions.presenceOfElementLocated(locator)); //next line of executed
+
 			Assert.assertTrue(true, "Element is Present");
 		} catch (Exception e) {
 			Assert.assertTrue(false, "Element is not Present");
