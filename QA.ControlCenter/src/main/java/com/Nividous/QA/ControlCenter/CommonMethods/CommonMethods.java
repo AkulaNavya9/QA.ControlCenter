@@ -2,6 +2,7 @@ package com.Nividous.QA.ControlCenter.CommonMethods;
 
 import org.openqa.selenium.WebDriver;
 
+import testBase.Base;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -22,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
-public class CommonMethods {
+public class CommonMethods extends Base{
 
 	
 
@@ -35,11 +36,11 @@ public class CommonMethods {
 	 *
 	 */
 
-	public WebDriver driver;
-	public ExtentTest reportsLogger;
+	//public WebDriver driver;
+	//public ExtentTest reportsLogger;
 	public long DEFAULT_EXPLICIT_WAIT_TIME;
 	//public Object LogStatus;
-	public static ExtentReports reports;
+	//public static ExtentReports reports;
 	public static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 	public static final ThreadLocal<ExtentTest> extentReport = new ThreadLocal<ExtentTest>();
 
@@ -59,7 +60,7 @@ public class CommonMethods {
 	 */
 
 	public void scrollBarDown(String scrollLength, int sleepSecs) {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		JavascriptExecutor jse = (JavascriptExecutor) getDriver();
 		jse.executeScript("window.scrollBy(0," + scrollLength + ")", "");
 		try {
 			Thread.sleep(sleepSecs);
@@ -69,13 +70,13 @@ public class CommonMethods {
 	}
 
 	public void scrollToView(WebElement ele) throws Exception {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		JavascriptExecutor jse = (JavascriptExecutor) getDriver();
 		jse.executeScript("arguments[0].scrollIntoView(true);", ele);
 		Thread.sleep(3000);
 	}
 
 	public void scrollBarUp(String scrollLength, int sleepSecs) {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		JavascriptExecutor jse = (JavascriptExecutor) getDriver();
 		jse.executeScript("window.scrollBy(0," + scrollLength + ")", "");
 		try {
 			Thread.sleep(sleepSecs);
@@ -85,21 +86,21 @@ public class CommonMethods {
 	}
 
 	public void clickButton(WebElement ele) throws InterruptedException {
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
 		executor.executeScript("arguments[0].click();", ele);
 	}
 
 	public void moveToElement(WebElement element) throws InterruptedException {
-		Actions actions = new Actions(driver);
+		Actions actions = new Actions(getDriver());
 		actions.moveToElement(element).build().perform();
 	}
 
 	public void scrollIntoView(WebElement element) throws InterruptedException {
-		WebElement banner = driver.findElement(By.xpath("html/body/div[2]/top-nav-bar/div/div/div"));
+		WebElement banner = getDriver().findElement(By.xpath("html/body/div[2]/top-nav-bar/div/div/div"));
 		int height = banner.getSize().getHeight() * -1;
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView();", element);
 		Thread.sleep(2000);
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + height + ")", "");
+		((JavascriptExecutor) getDriver()).executeScript("window.scrollBy(0," + height + ")", "");
 	}
 
 	public void selectItemByText(WebElement ele, String option, String CustomMessage) {
@@ -107,15 +108,15 @@ public class CommonMethods {
 		select.selectByVisibleText(option);
 		String itemSelected = select.getFirstSelectedOption().getText().trim();
 		if (itemSelected.isEmpty()) {
-			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			JavascriptExecutor executor = (JavascriptExecutor) getDriver();
 			executor.executeScript(
 					"var select = arguments[0]; for(var i = 0; i < select.options.length; i++){ if(select.options[i].text == arguments[1]){ select.options[i].selected = true; } }",
 					ele, option);
 			logger.info("Selected '" + option + "' Option from " + CustomMessage + " dropdown");
-			reportsLogger.log(LogStatus.INFO, "Selected '" + option + "' Option from " + CustomMessage + " dropdown");
+			//reportsLogger.log(LogStatus.INFO, "Selected '" + option + "' Option from " + CustomMessage + " dropdown");
 		} else {
 			logger.info("Selected '" + option + "' Option from " + CustomMessage + " dropdown");
-			reportsLogger.log(LogStatus.INFO, "Selected '" + option + "' Option from " + CustomMessage + " dropdown");
+			//reportsLogger.log(LogStatus.INFO, "Selected '" + option + "' Option from " + CustomMessage + " dropdown");
 		}
 	}
 
@@ -124,10 +125,10 @@ public class CommonMethods {
 			Select select = new Select(ele);
 			select.selectByIndex(itemIndex);
 			logger.info("Selected item at index: " + itemIndex + " From " + customMessage);
-			reportsLogger.log(LogStatus.INFO, "Selected item at index: " + itemIndex + " From " + customMessage);
+		//	reportsLogger.log(LogStatus.INFO, "Selected item at index: " + itemIndex + " From " + customMessage);
 		} catch (NoSuchElementException e) {
-			reportsLogger.log(LogStatus.FAIL,
-					"Unable to Select item at index: " + itemIndex + " From " + customMessage);
+			//reportsLogger.log(LogStatus.FAIL,
+					//"Unable to Select item at index: " + itemIndex + " From " + customMessage);
 			logger.error(e.getMessage());
 			throw e;
 		}
@@ -139,9 +140,9 @@ public class CommonMethods {
 			Select select = new Select(ele);
 			select.selectByValue(value);
 			logger.info("Selected '" + value + "' From " + customMessage);
-			reportsLogger.log(LogStatus.INFO, "Selected '" + value + "' From " + customMessage);
+			//reportsLogger.log(LogStatus.INFO, "Selected '" + value + "' From " + customMessage);
 		} catch (NoSuchElementException e) {
-			reportsLogger.log(LogStatus.ERROR, "Unable to Select '" + value + "' From " + customMessage);
+			//reportsLogger.log(LogStatus.ERROR, "Unable to Select '" + value + "' From " + customMessage);
 			logger.error(e.getMessage());
 			throw e;
 		}
@@ -161,34 +162,34 @@ public class CommonMethods {
 	 * pagination scenarios
 	 */
 	public WebElement findElement(By locator, long timeOutInSeconds) {
-		return (new WebDriverWait(this.driver, timeOutInSeconds))
+		return (new WebDriverWait(this.getDriver(), timeOutInSeconds))
 				.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
 	public WebElement findElementWithClickableExplicitWait(WebElement element, long timeOutInSeconds) {
-		return (new WebDriverWait(this.driver, timeOutInSeconds))
+		return (new WebDriverWait(this.getDriver(), timeOutInSeconds))
 				.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
 	public void commonMouseHoverAction(WebElement element, String customMessage) {
 		try {
-			(new WebDriverWait(driver, DEFAULT_EXPLICIT_WAIT_TIME))
+			(new WebDriverWait(getDriver(), DEFAULT_EXPLICIT_WAIT_TIME))
 					.until(ExpectedConditions.elementToBeClickable(element));
-			Actions action = new Actions(this.driver);
+			Actions action = new Actions(this.getDriver());
 			action.moveToElement(element).build().perform();
-			reportsLogger.log(LogStatus.INFO, "Mouse Hover '" + customMessage + "'");
+			//reportsLogger.log(LogStatus.INFO, "Mouse Hover '" + customMessage + "'");
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			reportsLogger.log(LogStatus.ERROR, "Not able to Mouse Hover '" + customMessage + "'");
+			//reportsLogger.log(LogStatus.ERROR, "Not able to Mouse Hover '" + customMessage + "'");
 			throw e;
 		}
 	}
 
 	public boolean isElementPresent(By locator) {
 		try {
-			new WebDriverWait(this.driver, DEFAULT_EXPLICIT_WAIT_TIME)
+			new WebDriverWait(this.getDriver(), DEFAULT_EXPLICIT_WAIT_TIME)
 					.until(ExpectedConditions.presenceOfElementLocated(locator));
-			this.driver.findElement(locator);
+			this.getDriver().findElement(locator);
 			return true;
 		} catch (NoSuchElementException e) {
 			logger.error("The Exception is :: " + e);
@@ -206,7 +207,7 @@ public class CommonMethods {
 	public boolean isElementPresent(By locator, long timeOutInSeconds) {
 
 		try {
-			(new WebDriverWait(this.driver, timeOutInSeconds))
+			(new WebDriverWait(this.getDriver(), timeOutInSeconds))
 					.until(ExpectedConditions.presenceOfElementLocated(locator));
 			return true;
 		} catch (Exception e) {
@@ -226,9 +227,9 @@ public class CommonMethods {
 
 	public boolean isLinkDisplayed(String link) {
 		try {
-			if (driver.findElement(By.partialLinkText(link)).isDisplayed()) {
+			if (getDriver().findElement(By.partialLinkText(link)).isDisplayed()) {
 				logger.info(link + " link is displayed");
-				return driver.findElement(By.partialLinkText(link)).isDisplayed();
+				return getDriver().findElement(By.partialLinkText(link)).isDisplayed();
 			} else {
 				return false;
 			}
@@ -239,7 +240,7 @@ public class CommonMethods {
 
 	public void waitForElementToBeVisible(WebElement ele, long timeOutInSeconds) {
 		try {
-			(new WebDriverWait(this.driver, timeOutInSeconds)).until(ExpectedConditions.visibilityOf(ele));
+			(new WebDriverWait(this.getDriver(), timeOutInSeconds)).until(ExpectedConditions.visibilityOf(ele));
 			Assert.assertTrue(true, "Element is Present and Visible");
 		} catch (Exception e) {
 			Assert.assertTrue(false, "Element is Present but not Visible");
@@ -248,7 +249,7 @@ public class CommonMethods {
 
 	public void waitForElementToBePresent(By locator, long timeOutInSeconds) {
 		try {
-			(new WebDriverWait(this.driver, timeOutInSeconds))
+			(new WebDriverWait(this.getDriver(), timeOutInSeconds))
 					.until(ExpectedConditions.presenceOfElementLocated(locator));
 			Assert.assertTrue(true, "Element is Present");
 		} catch (Exception e) {
@@ -260,10 +261,10 @@ public class CommonMethods {
 		try {
 			if (element.isDisplayed()) {
 				logger.info(element.getText() + " is displayed");
-				reportsLogger.log(LogStatus.INFO, element.getText() + " Element Visible");
+				//reportsLogger.log(LogStatus.INFO, element.getText() + " Element Visible");
 				return element.isDisplayed();
 			} else {
-				reportsLogger.log(LogStatus.ERROR, "Element is Not Visible");
+				//reportsLogger.log(LogStatus.ERROR, "Element is Not Visible");
 				return false;
 			}
 		} catch (NoSuchElementException exp) {
