@@ -1,3 +1,4 @@
+
 package com.Nividous.QA.ControlCenter.CommonMethods;
 
 import org.openqa.selenium.WebDriver;
@@ -90,6 +91,13 @@ public class CommonMethods extends Base{
 		executor.executeScript("arguments[0].click();", ele);
 	}
 
+	public void sendKeys(WebElement ele, String value)
+	{
+		JavascriptExecutor jse = ((JavascriptExecutor)getDriver());        	
+		jse.executeScript("arguments[0].value=value;", ele);
+		
+	}
+	
 	public void moveToElement(WebElement element) throws InterruptedException {
 		Actions actions = new Actions(getDriver());
 		actions.moveToElement(element).build().perform();
@@ -250,10 +258,11 @@ public class CommonMethods extends Base{
 	public void waitForElementToBePresent(By locator, long timeOutInSeconds) {
 		try {
 
+			(new WebDriverWait(this.getDriver(), timeOutInSeconds))
+					.until(ExpectedConditions.presenceOfElementLocated(locator));
 
-			(new WebDriverWait(this.driver, timeOutInSeconds))
-					.until(ExpectedConditions.presenceOfElementLocated(locator)); //next line of executed
-
+			(new WebDriverWait(this.getDriver(), timeOutInSeconds))
+					.until(ExpectedConditions.presenceOfElementLocated(locator)); 
 			Assert.assertTrue(true, "Element is Present");
 		} catch (Exception e) {
 			Assert.assertTrue(false, "Element is not Present");
