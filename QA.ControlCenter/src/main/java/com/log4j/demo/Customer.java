@@ -9,7 +9,7 @@ public class Customer {
     static Logger logger = Logger.getLogger(Customer.class);
     public static void main(String[] args) { 
     	
-    	DOMConfigurator.configure(Log4j2.xml);
+    	BasicConfigurator.configure();
     logger.error("This is ERROR message");
         logger.warn("This is WARNING message"); 
     logger.fatal("This is FATAL message");
