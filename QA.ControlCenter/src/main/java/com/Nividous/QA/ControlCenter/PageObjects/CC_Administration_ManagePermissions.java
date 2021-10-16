@@ -1,5 +1,6 @@
 package com.Nividous.QA.ControlCenter.PageObjects;
 
+import com.Nividous.QA.ControlCenter.CommonMethods.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,8 @@ import testBase.Base;
 
 public class CC_Administration_ManagePermissions {
 
+	private static CommonMethods common = new CommonMethods();
+	
 	public CC_Administration_ManagePermissions() {
 		PageFactory.initElements(Base.getDriver(), this);
 	}
@@ -37,5 +40,16 @@ public class CC_Administration_ManagePermissions {
 		
 		
 	}
+	
+	public void clickManagePermission() {
+		try {
+		common.clickButton(btnAdminManagePermisions);
+		}
+		catch(InterruptedException e) { 
+			   Thread.currentThread().interrupt(); 
+			}
+	}
+	
+	
 	
 }
