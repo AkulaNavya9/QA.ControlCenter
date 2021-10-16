@@ -9,7 +9,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import java.util.Random;
+import java.util.Random.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -44,7 +44,7 @@ public class CommonMethods extends Base{
 	//public static ExtentReports reports;
 	public static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 	public static final ThreadLocal<ExtentTest> extentReport = new ThreadLocal<ExtentTest>();
-
+	public static CommonMethods common = new CommonMethods();
 	private static Logger logger = LoggerFactory.getLogger(CommonMethods.class);
 
 	// public static ExtentReports getReports(){
@@ -90,7 +90,7 @@ public class CommonMethods extends Base{
 		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
 		executor.executeScript("arguments[0].click();", ele);
 	}
-
+	
 	public void sendKeys(WebElement ele, String value)
 	{
 		JavascriptExecutor jse = ((JavascriptExecutor)getDriver());        	
