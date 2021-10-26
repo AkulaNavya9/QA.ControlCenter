@@ -4,6 +4,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CC_Robots_CCAudit {
+	
+	
+	public static CC_Robots_CCAudit robaudit = getSingletonrobaudit();
+	
+	public static CC_Robots_CCAudit getSingletonrobaudit()
+	{
+	if (robaudit == null) {
+		synchronized (CC_Robots_CCAudit.class) {
+			if (robaudit == null) {
+				robaudit = new CC_Robots_CCAudit();// instance will be created at request time
+			}
+		}
+	}
+	return robaudit;
+}
 
 	@FindBy(css = "#aui_3_4_0_1_690 > tr > td:nth-child(1) > a")
 	WebElement robotName1;

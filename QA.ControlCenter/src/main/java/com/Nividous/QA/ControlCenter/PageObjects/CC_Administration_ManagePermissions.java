@@ -11,11 +11,25 @@ import testBase.Base;
 
 public class CC_Administration_ManagePermissions {
 
-	private static CommonMethods common = new CommonMethods();
-	
+
 	public CC_Administration_ManagePermissions() {
 		PageFactory.initElements(Base.getDriver(), this);
 	}
+	
+	public static CC_Administration_ManagePermissions manperm = getSingletonmanperm();
+	
+	public static CC_Administration_ManagePermissions getSingletonmanperm()
+	{
+	if (manperm == null) {
+		synchronized (CC_Administration_ManagePermissions.class) {
+			if (manperm == null) {
+				manperm = new CC_Administration_ManagePermissions();// instance will be created at request time
+			}
+		}
+	}
+	return manperm;
+}
+	
 	
 	@FindBy(css = "button[class='btn btn-default resource-link']")
 	WebElement btnAdminManagePermisions;
@@ -43,7 +57,7 @@ public class CC_Administration_ManagePermissions {
 	
 	public void clickManagePermission() {
 		try {
-		common.clickButton(btnAdminManagePermisions);
+			CommonMethods.getSingletonCommon().clickButton(btnAdminManagePermisions);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 

@@ -59,5 +59,15 @@
 	<classpathentry kind="lib" path="C:/Users/Akula.Navya/Downloads/jar_files/mongodb-driver-3.0.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Akula.Navya/Downloads/jar_files/mongodb-driver-core-3.0.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Akula.Navya/Downloads/jar_files/sqlite-jdbc-3.8.11.1.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-api-3.141.59.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-chrome-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-edge-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-firefox-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-ie-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-java-3.141.59.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-opera-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-remote-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-safari-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="E:/selenium/selenium-support-3.141.59.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

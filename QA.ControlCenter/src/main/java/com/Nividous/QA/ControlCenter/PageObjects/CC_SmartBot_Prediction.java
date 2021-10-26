@@ -4,6 +4,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CC_SmartBot_Prediction {
+	
+	public static CC_SmartBot_Prediction smartbotpred = getSingletonsmartbotpred();
+	
+	public static CC_SmartBot_Prediction getSingletonsmartbotpred()
+	{
+	if (smartbotpred == null) {
+		synchronized (CC_SmartBot_Prediction.class) {
+			if (smartbotpred == null) {
+				smartbotpred = new CC_SmartBot_Prediction();// instance will be created at request time
+			}
+		}
+	}
+	return smartbotpred;
+}
 
 	
 	@FindBy(css = "#aui_3_4_0_1_1324")

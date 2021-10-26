@@ -5,18 +5,27 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.Nividous.QA.ControlCenter.CommonMethods.CommonMethods;
-import testBase.ConfigDetails;
-
-import testBase.Base;
+import testBase.*;
 
 public class CC_Login {
 
-	private static CommonMethods common = new CommonMethods();
-	private static ConfigDetails configDetls = new ConfigDetails();
+
+	//private static ConfigDetails configDetls = new ConfigDetails();
+	public static CC_Login login = getSingletonlogin();
 	
-	public CC_Login() {
-		PageFactory.initElements(Base.getDriver(), this);
+	public static CC_Login getSingletonlogin()
+	{
+	if (login == null) {
+		synchronized (CC_Login.class) {
+			if (login == null) {
+				login = new CC_Login();// instance will be created at request time
+			}
+		}
 	}
+	return login;
+}
+	
+
 
 	@FindBy(id = "txtUserName")
 	WebElement txtUsername;
@@ -30,19 +39,24 @@ public class CC_Login {
 	@FindBy(css = "span[class='taglib-text']")
 	WebElement linkForgotPassword;
 	
+	public CC_Login() {
+		PageFactory.initElements(Base.getDriver(), this);
+	}
+	
 	public void enterUsername() {
-	common.sendKeys(txtUsername, configDetls.getUsername());	
+		
+	CommonMethods.getSingletonCommon().sendKeys(txtUsername, ReadConfigFile.getSingletonConfigDetails().getUsername());	
 	
 	}
 	
 	public void enterPassword() {
-	common.sendKeys(txtUsername, configDetls.getPassword());	
+	CommonMethods.getSingletonCommon().sendKeys(txtPassword, ReadConfigFile.getSingletonConfigDetails().getPassword());	
 	
 	}
 	
 	public void clickLogin() {
 	try {
-		common.clickButton(btnLogin);
+		CommonMethods.getSingletonCommon().clickButton(btnLogin);
 	
 	}
 	catch(InterruptedException e) {
@@ -52,7 +66,7 @@ public class CC_Login {
 	
 	public void clickForgotPassword() {
 	try {
-		common.clickButton(linkForgotPassword);
+		CommonMethods.getSingletonCommon().clickButton(linkForgotPassword);
 	
 	}
 	catch(InterruptedException e) {

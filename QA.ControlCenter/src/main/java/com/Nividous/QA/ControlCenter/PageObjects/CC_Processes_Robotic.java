@@ -4,6 +4,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CC_Processes_Robotic {
+	
+	public static CC_Processes_Robotic procrobot = getSingletonprocrobot();
+	
+	public static CC_Processes_Robotic getSingletonprocrobot()
+	{
+	if (procrobot == null) {
+		synchronized (CC_Processes_Robotic.class) {
+			if (procrobot == null) {
+				procrobot = new CC_Processes_Robotic();// instance will be created at request time
+			}
+		}
+	}
+	return procrobot;
+}
+	
 
 	@FindBy ( id = "newProcessViewId")
 	WebElement createProcessBtn; 

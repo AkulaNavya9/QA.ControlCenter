@@ -6,6 +6,20 @@ import org.openqa.selenium.support.ui.Select;
 
 public class CC_Management_BusinessDashboard {
 
+	public static CC_Management_BusinessDashboard busdash = getSingletonbusdash();
+	
+	public static CC_Management_BusinessDashboard getSingletonbusdash()
+	{
+	if (busdash == null) {
+		synchronized (CC_Management_BusinessDashboard.class) {
+			if (busdash == null) {
+				busdash = new CC_Management_BusinessDashboard();// instance will be created at request time
+			}
+		}
+	}
+	return busdash;
+}
+	
 	
 	@FindBy(id = "deployButton")
 	WebElement btnBusProcessDeploy;

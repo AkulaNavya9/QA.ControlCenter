@@ -4,6 +4,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CC_MyTasks {
+	
+	public static CC_MyTasks mytask = getSingletonmytask();
+	
+	public static CC_MyTasks getSingletonmytask()
+	{
+	if (mytask == null) {
+		synchronized (CC_MyTasks.class) {
+			if (mytask == null) {
+				mytask = new CC_MyTasks();// instance will be created at request time
+			}
+		}
+	}
+	return mytask;
+}
+	
+	
+	
 
 	@FindBy (xpath ="//li[@class='list-group-item node-treeview1 node-selected']")
 	WebElement mytaskBtn;

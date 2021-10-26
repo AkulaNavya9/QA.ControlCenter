@@ -4,6 +4,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CC_Management_Reports {
+	
+	
+	public static CC_Management_Reports mgmtrep = getSingletonmgmtrep();
+	
+	public static CC_Management_Reports getSingletonmgmtrep()
+	{
+	if (mgmtrep == null) {
+		synchronized (CC_Management_Reports.class) {
+			if (mgmtrep == null) {
+				mgmtrep = new CC_Management_Reports();// instance will be created at request time
+			}
+		}
+	}
+	return mgmtrep;
+}
+	
+	
 
 	@FindBy(id = "createReport")
 	WebElement createReportBtn;

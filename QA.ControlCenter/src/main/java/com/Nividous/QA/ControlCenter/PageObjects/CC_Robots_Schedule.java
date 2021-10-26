@@ -13,7 +13,7 @@ import testBase.Base;
 
 public class CC_Robots_Schedule {
 	
-	private static CommonMethods common = new CommonMethods();
+	
 	
 
 	public  CC_Robots_Schedule()
@@ -21,6 +21,20 @@ public class CC_Robots_Schedule {
 	{
 		PageFactory.initElements(Base.getDriver(), this);
 	}
+	
+	public static CC_Robots_Schedule robschedule = getSingletonrobschedule();
+	
+	public static CC_Robots_Schedule getSingletonrobschedule()
+	{
+	if (robschedule == null) {
+		synchronized (CC_Robots_Schedule.class) {
+			if (robschedule == null) {
+				robschedule = new CC_Robots_Schedule();// instance will be created at request time
+			}
+		}
+	}
+	return robschedule;
+}
 	
 	@FindBy(id = "showScheduler")
 	WebElement addScheduleBtn ;
@@ -116,14 +130,14 @@ public class CC_Robots_Schedule {
 	public void addScheduleNow()
 	{
 		try {
-			common.clickButton(addScheduleBtn);
+			CommonMethods.getSingletonCommon().clickButton(addScheduleBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
 		try {
-			common.clickButton(ddSelectProcess);
+			CommonMethods.getSingletonCommon().clickButton(ddSelectProcess);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -131,16 +145,16 @@ public class CC_Robots_Schedule {
 		Select ddProcess = new Select(ddSelectProcess);
 		ddProcess.selectByIndex(1);
 		
-		common.sendKeys(value, "schedule now");
-		common.scrollBarDown("400", 0);
+		CommonMethods.getSingletonCommon().sendKeys(value, "schedule now");
+		CommonMethods.getSingletonCommon().scrollBarDown("400", 0);
 		try {
-			common.clickButton(scheduleNow);
+			CommonMethods.getSingletonCommon().clickButton(scheduleNow);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		try {
-			common.clickButton(scheduleProcessBtn);
+			CommonMethods.getSingletonCommon().clickButton(scheduleProcessBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -151,14 +165,14 @@ public class CC_Robots_Schedule {
 	public void addScheduleOnce()
 	{
 		try {
-			common.clickButton(addScheduleBtn);
+			CommonMethods.getSingletonCommon().clickButton(addScheduleBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
 		try {
-			common.clickButton(ddSelectProcess);
+			CommonMethods.getSingletonCommon().clickButton(ddSelectProcess);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -166,17 +180,17 @@ public class CC_Robots_Schedule {
 		Select ddProcess = new Select(ddSelectProcess);
 		ddProcess.selectByIndex(1);
 		
-		common.sendKeys(value, "schedule once");
-		common.scrollBarDown("400", 0);
+		CommonMethods.getSingletonCommon().sendKeys(value, "schedule once");
+		CommonMethods.getSingletonCommon().scrollBarDown("400", 0);
 		try {
-			common.clickButton(scheduleOnce);
+			CommonMethods.getSingletonCommon().clickButton(scheduleOnce);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
-		common.sendKeys(startsOn, "11/10/2021 20:00");//Mention date and time in dd/mm/yyyy hours:minutes(24 hour format)
+		CommonMethods.getSingletonCommon().sendKeys(startsOn, "11/10/2021 20:00");//Mention date and time in dd/mm/yyyy hours:minutes(24 hour format)
 		try {
-			common.clickButton(scheduleProcessBtn);
+			CommonMethods.getSingletonCommon().clickButton(scheduleProcessBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -187,14 +201,14 @@ public class CC_Robots_Schedule {
 	public void addScheduleDaily()
 	{
 		try {
-			common.clickButton(addScheduleBtn);
+			CommonMethods.getSingletonCommon().clickButton(addScheduleBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
 		try {
-			common.clickButton(ddSelectProcess);
+			CommonMethods.getSingletonCommon().clickButton(ddSelectProcess);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -202,30 +216,30 @@ public class CC_Robots_Schedule {
 		Select ddProcess = new Select(ddSelectProcess);
 		ddProcess.selectByIndex(1);
 		
-		common.sendKeys(value, "schedule Daily");
-		common.scrollBarDown("400", 0);
+		CommonMethods.getSingletonCommon().sendKeys(value, "schedule Daily");
+		CommonMethods.getSingletonCommon().scrollBarDown("400", 0);
 		try {
-			common.clickButton(scheduleDaily);
+			CommonMethods.getSingletonCommon().clickButton(scheduleDaily);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
-		common.sendKeys(startsOn, "11/10/2021 20:00");//Mention date and time in dd/mm/yyyy hours:minutes(24 hour format)
+		CommonMethods.getSingletonCommon().sendKeys(startsOn, "11/10/2021 20:00");//Mention date and time in dd/mm/yyyy hours:minutes(24 hour format)
 		try {
-			common.clickButton(expiresNever);
+			CommonMethods.getSingletonCommon().clickButton(expiresNever);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
 		try {
-			common.clickButton(dnrDays);
+			CommonMethods.getSingletonCommon().clickButton(dnrDays);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		try {
-			common.clickButton(scheduleProcessBtn);
+			CommonMethods.getSingletonCommon().clickButton(scheduleProcessBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -236,14 +250,14 @@ public class CC_Robots_Schedule {
 	public void addScheduleHourly()
 	{
 		try {
-			common.clickButton(addScheduleBtn);
+			CommonMethods.getSingletonCommon().clickButton(addScheduleBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
 		try {
-			common.clickButton(ddSelectProcess);
+			CommonMethods.getSingletonCommon().clickButton(ddSelectProcess);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -251,32 +265,32 @@ public class CC_Robots_Schedule {
 		Select ddProcess = new Select(ddSelectProcess);
 		ddProcess.selectByIndex(1);
 		
-		common.sendKeys(value, "schedule Hourly");
-		common.scrollBarDown("400", 0);
+		CommonMethods.getSingletonCommon().sendKeys(value, "schedule Hourly");
+		CommonMethods.getSingletonCommon().scrollBarDown("400", 0);
 		try {
-			common.clickButton(scheduleHourly);
+			CommonMethods.getSingletonCommon().clickButton(scheduleHourly);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
-		common.sendKeys(startsOn, "11/10/2021 20:30");//Mention date and time in dd/mm/yyyy hours:minutes(24 hour format)
+		CommonMethods.getSingletonCommon().sendKeys(startsOn, "11/10/2021 20:30");//Mention date and time in dd/mm/yyyy hours:minutes(24 hour format)
 		try {
-			common.clickButton(expiresNever);
+			CommonMethods.getSingletonCommon().clickButton(expiresNever);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
-		common.sendKeys(perHours, "1");
+		CommonMethods.getSingletonCommon().sendKeys(perHours, "1");
 		try {
-			common.clickButton(dnrDays);
+			CommonMethods.getSingletonCommon().clickButton(dnrDays);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		try {
-			common.clickButton(scheduleProcessBtn);
+			CommonMethods.getSingletonCommon().clickButton(scheduleProcessBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -287,14 +301,14 @@ public class CC_Robots_Schedule {
 	public void addScheduleWeekly()
 	{
 		try {
-			common.clickButton(addScheduleBtn);
+			CommonMethods.getSingletonCommon().clickButton(addScheduleBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
 		try {
-			common.clickButton(ddSelectProcess);
+			CommonMethods.getSingletonCommon().clickButton(ddSelectProcess);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -302,17 +316,17 @@ public class CC_Robots_Schedule {
 		Select ddProcess = new Select(ddSelectProcess);
 		ddProcess.selectByIndex(1);
 		
-		common.sendKeys(value, "schedule Weekly");
-		common.scrollBarDown("400", 0);
+		CommonMethods.getSingletonCommon().sendKeys(value, "schedule Weekly");
+		CommonMethods.getSingletonCommon().scrollBarDown("400", 0);
 		try {
-			common.clickButton(scheduleWeekly);
+			CommonMethods.getSingletonCommon().clickButton(scheduleWeekly);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
-		common.sendKeys(startsOn, "11/10/2021 21:00");//Mention date and time in dd/mm/yyyy hours:minutes(24 hour format)
+		CommonMethods.getSingletonCommon().sendKeys(startsOn, "11/10/2021 21:00");//Mention date and time in dd/mm/yyyy hours:minutes(24 hour format)
 		try {
-			common.clickButton(ddDayOfWeek);
+			CommonMethods.getSingletonCommon().clickButton(ddDayOfWeek);
 		} catch (InterruptedException e1) {
 			Thread.currentThread().interrupt();
 			e1.printStackTrace();
@@ -322,40 +336,40 @@ public class CC_Robots_Schedule {
 		
 		
 		try {
-			common.clickButton(expiresNever);
+			CommonMethods.getSingletonCommon().clickButton(expiresNever);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
 		try {
-			common.clickButton(dnrDates);
+			CommonMethods.getSingletonCommon().clickButton(dnrDates);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
-		common.sendKeys(dnrDatesfromDate, "13/10/2021");
-		common.sendKeys(dnrDatesToDate, "14/10/2021");
+		CommonMethods.getSingletonCommon().sendKeys(dnrDatesfromDate, "13/10/2021");
+		CommonMethods.getSingletonCommon().sendKeys(dnrDatesToDate, "14/10/2021");
 		try {
-			common.clickButton(scheduleProcessBtn);
+			CommonMethods.getSingletonCommon().clickButton(scheduleProcessBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 	}
 	
-	public void scheduleAdvanced()
+	public void addscheduleAdvanced(String cronexpression)
 	{
 		try {
-			common.clickButton(addScheduleBtn);
+			CommonMethods.getSingletonCommon().clickButton(addScheduleBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		
 		try {
-			common.clickButton(ddSelectProcess);
+			CommonMethods.getSingletonCommon().clickButton(ddSelectProcess);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -363,18 +377,18 @@ public class CC_Robots_Schedule {
 		Select ddProcess = new Select(ddSelectProcess);
 		ddProcess.selectByIndex(1);
 		
-		common.sendKeys(value, "schedule Advanced");
-		common.scrollBarDown("400", 0);
+		CommonMethods.getSingletonCommon().sendKeys(value, "schedule Advanced");
+		CommonMethods.getSingletonCommon().scrollBarDown("400", 0);
 		try {
-			common.clickButton(advanceSchedule);
+			CommonMethods.getSingletonCommon().clickButton(advanceSchedule);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
-		common.sendKeys(cronExp, "enter cron expression");
-		common.scrollBarDown("400", 0);
+		CommonMethods.getSingletonCommon().sendKeys(cronExp, cronexpression);
+		CommonMethods.getSingletonCommon().scrollBarDown("400", 0);
 		try {
-			common.clickButton(scheduleProcessBtn);
+			CommonMethods.getSingletonCommon().clickButton(scheduleProcessBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();

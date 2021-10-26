@@ -12,13 +12,28 @@ import org.openqa.selenium.support.ui.Select;
 
 public class CC_Processes_Business {
 
-	private static CommonMethods common = new CommonMethods();
+	
 	
 	public CC_Processes_Business()
 
 	{
 		PageFactory.initElements(Base.getDriver(), this);
 	}
+	
+	
+	public static CC_Processes_Business procbus = getSingletonprocbus();
+	
+	public static CC_Processes_Business getSingletonprocbus()
+	{
+	if (procbus == null) {
+		synchronized (CC_Processes_Business.class) {
+			if (procbus == null) {
+				procbus = new CC_Processes_Business();// instance will be created at request time
+			}
+		}
+	}
+	return procbus;
+}
 	
 	@FindBy ( id = "deployButton")
 	WebElement homeDeployBtn;
@@ -59,26 +74,26 @@ public class CC_Processes_Business {
 	public void clickHomeDeply() 
 	{
 		try {
-			common.clickButton(homeDeployBtn);
+			CommonMethods.getSingletonCommon().clickButton(homeDeployBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		try {
-			common.clickButton(browseBtn);
+			CommonMethods.getSingletonCommon().clickButton(browseBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		//need to add code to read external files from file explorer
 				try {
-					common.clickButton(closeBtn);
+					CommonMethods.getSingletonCommon().clickButton(closeBtn);
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
 					e.printStackTrace();
 				}
 				try {
-					common.clickButton(deployBtn);
+					CommonMethods.getSingletonCommon().clickButton(deployBtn);
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
 					e.printStackTrace();
@@ -88,13 +103,13 @@ public class CC_Processes_Business {
 	public void customFilter()
 	{
 		try {
-			common.clickButton(customFilterBtn);
+			CommonMethods.getSingletonCommon().clickButton(customFilterBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		try {
-			common.clickButton(ddFilter);
+			CommonMethods.getSingletonCommon().clickButton(ddFilter);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
@@ -103,36 +118,36 @@ public class CC_Processes_Business {
 		
 		ddprocess.selectByValue("name");
 		
-		common.sendKeys(beginsWith, "demo");
+		CommonMethods.getSingletonCommon().sendKeys(beginsWith, "demo");
 		try {
-			common.clickButton(filterApplyBtn);
+			CommonMethods.getSingletonCommon().clickButton(filterApplyBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		try {
-			common.clickButton(addRuleBtn);
+			CommonMethods.getSingletonCommon().clickButton(addRuleBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		try {
-			common.clickButton(ddFilter);
+			CommonMethods.getSingletonCommon().clickButton(ddFilter);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		ddprocess.selectByValue("version");
 		
-		common.sendKeys(beginsWith, "demo1");
+		CommonMethods.getSingletonCommon().sendKeys(beginsWith, "demo1");
 		try {
-			common.clickButton(filterApplyBtn);
+			CommonMethods.getSingletonCommon().clickButton(filterApplyBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
 		try {
-			common.clickButton(filterDeleteBtn);
+			CommonMethods.getSingletonCommon().clickButton(filterDeleteBtn);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();

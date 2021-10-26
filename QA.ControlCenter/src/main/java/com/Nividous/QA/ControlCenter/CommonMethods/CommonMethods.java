@@ -3,26 +3,34 @@ package com.Nividous.QA.ControlCenter.CommonMethods;
 
 import org.openqa.selenium.WebDriver;
 
-import testBase.Base;
+import testBase.*;
+
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+
+
+import java.util.Random;
 import java.util.Random.*;
 
+import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select; 
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+
 
 public class CommonMethods extends Base{
 
@@ -42,10 +50,26 @@ public class CommonMethods extends Base{
 	public long DEFAULT_EXPLICIT_WAIT_TIME;
 	//public Object LogStatus;
 	//public static ExtentReports reports;
-	public static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
+
 	public static final ThreadLocal<ExtentTest> extentReport = new ThreadLocal<ExtentTest>();
-	public static CommonMethods common = new CommonMethods();
-	private static Logger logger = LoggerFactory.getLogger(CommonMethods.class);
+	public static CommonMethods common = getSingletonCommon();
+		private static Logger logger = Logger.getLogger(CommonMethods.class);
+				
+
+	
+	public static CommonMethods getSingletonCommon()
+		{
+		if (common == null) {
+			synchronized (CommonMethods.class) {
+				if (common == null) {
+					common = new CommonMethods();// instance will be created at request time
+				}
+			}
+		}
+		return common;
+	}
+	
+	
 
 	// public static ExtentReports getReports(){
 	// return reports;
@@ -59,6 +83,8 @@ public class CommonMethods extends Base{
 	 * public synchronized void startTest(String testName) { ExtentTest test =
 	 * reports.startTest(testName); setCurrentLogger(test); }
 	 */
+	
+
 
 	public void scrollBarDown(String scrollLength, int sleepSecs) {
 		JavascriptExecutor jse = (JavascriptExecutor) getDriver();
@@ -87,15 +113,16 @@ public class CommonMethods extends Base{
 	}
 
 	public void clickButton(WebElement ele) throws InterruptedException {
-		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
-		executor.executeScript("arguments[0].click();", ele);
+		JavascriptExecutor jse = (JavascriptExecutor) getDriver();
+		jse.executeScript("arguments[0].click();", ele);
+		
 	}
 	
 	public void sendKeys(WebElement ele, String value)
 	{
-		JavascriptExecutor jse = ((JavascriptExecutor)getDriver());        	
-		jse.executeScript("arguments[0].value=value;", ele);
-		
+		JavascriptExecutor jse = (JavascriptExecutor) getDriver();        	
+		//jse.executeScript("arguments[0].value="+value+";", ele);
+		jse.executeScript("arguments[0].value='"+ value +"';", ele);
 	}
 	
 	public void moveToElement(WebElement element) throws InterruptedException {
@@ -170,12 +197,12 @@ public class CommonMethods extends Base{
 	 * pagination scenarios
 	 */
 	public WebElement findElement(By locator, long timeOutInSeconds) {
-		return (new WebDriverWait(this.getDriver(), timeOutInSeconds))
+		return (new WebDriverWait(getDriver(), timeOutInSeconds))
 				.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
 	public WebElement findElementWithClickableExplicitWait(WebElement element, long timeOutInSeconds) {
-		return (new WebDriverWait(this.getDriver(), timeOutInSeconds))
+		return (new WebDriverWait(getDriver(), timeOutInSeconds))
 				.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
@@ -183,7 +210,7 @@ public class CommonMethods extends Base{
 		try {
 			(new WebDriverWait(getDriver(), DEFAULT_EXPLICIT_WAIT_TIME))
 					.until(ExpectedConditions.elementToBeClickable(element));
-			Actions action = new Actions(this.getDriver());
+			Actions action = new Actions(getDriver());
 			action.moveToElement(element).build().perform();
 			//reportsLogger.log(LogStatus.INFO, "Mouse Hover '" + customMessage + "'");
 		} catch (Exception e) {
@@ -195,9 +222,9 @@ public class CommonMethods extends Base{
 
 	public boolean isElementPresent(By locator) {
 		try {
-			new WebDriverWait(this.getDriver(), DEFAULT_EXPLICIT_WAIT_TIME)
+			new WebDriverWait(getDriver(), DEFAULT_EXPLICIT_WAIT_TIME)
 					.until(ExpectedConditions.presenceOfElementLocated(locator));
-			this.getDriver().findElement(locator);
+			getDriver().findElement(locator);
 			return true;
 		} catch (NoSuchElementException e) {
 			logger.error("The Exception is :: " + e);
@@ -215,7 +242,7 @@ public class CommonMethods extends Base{
 	public boolean isElementPresent(By locator, long timeOutInSeconds) {
 
 		try {
-			(new WebDriverWait(this.getDriver(), timeOutInSeconds))
+			(new WebDriverWait(getDriver(), timeOutInSeconds))
 					.until(ExpectedConditions.presenceOfElementLocated(locator));
 			return true;
 		} catch (Exception e) {
@@ -248,7 +275,7 @@ public class CommonMethods extends Base{
 
 	public void waitForElementToBeVisible(WebElement ele, long timeOutInSeconds) {
 		try {
-			(new WebDriverWait(this.getDriver(), timeOutInSeconds)).until(ExpectedConditions.visibilityOf(ele));
+			(new WebDriverWait(getDriver(), timeOutInSeconds)).until(ExpectedConditions.visibilityOf(ele));
 			Assert.assertTrue(true, "Element is Present and Visible");
 		} catch (Exception e) {
 			Assert.assertTrue(false, "Element is Present but not Visible");
@@ -258,10 +285,10 @@ public class CommonMethods extends Base{
 	public void waitForElementToBePresent(By locator, long timeOutInSeconds) {
 		try {
 
-			(new WebDriverWait(this.getDriver(), timeOutInSeconds))
+			(new WebDriverWait(getDriver(), timeOutInSeconds))
 					.until(ExpectedConditions.presenceOfElementLocated(locator));
 
-			(new WebDriverWait(this.getDriver(), timeOutInSeconds))
+			(new WebDriverWait(getDriver(), timeOutInSeconds))
 					.until(ExpectedConditions.presenceOfElementLocated(locator)); 
 			Assert.assertTrue(true, "Element is Present");
 		} catch (Exception e) {

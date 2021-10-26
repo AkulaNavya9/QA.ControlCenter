@@ -8,11 +8,25 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CC_Home extends Base{
 	
-	private static CommonMethods common = new CommonMethods();
+	
 	
 	public CC_Home() {
 		PageFactory.initElements(Base.getDriver(), this);
 	}
+	
+	public static CC_Home home = getSingletonHome();
+	
+	public static CC_Home getSingletonHome()
+	{
+	if (home == null) {
+		synchronized (CC_Home.class) {
+			if (home == null) {
+				home = new CC_Home();// instance will be created at request time
+			}
+		}
+	}
+	return home;
+}
 	
 	@FindBy(xpath = "//a[@title='My Tasks']/child::img[@alt='Page Icon']")
 	WebElement lblMenuMyTasks;
@@ -91,7 +105,7 @@ public class CC_Home extends Base{
 	
 		public void hoverrobotmenu() {
 		try {
-		common.moveToElement(lblMenuRobot);
+		CommonMethods.getSingletonCommon().moveToElement(lblMenuRobot);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -100,7 +114,7 @@ public class CC_Home extends Base{
 	
 	public void hoverProcessesmenu() {
 		try {
-		common.moveToElement(lblMenuProcesses);
+		CommonMethods.getSingletonCommon().moveToElement(lblMenuProcesses);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -109,7 +123,7 @@ public class CC_Home extends Base{
 	
 	public void hoverManagementmenu() {
 		try {
-		common.moveToElement(lblMenuManagement);
+		CommonMethods.getSingletonCommon().moveToElement(lblMenuManagement);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -118,7 +132,7 @@ public class CC_Home extends Base{
 	
 	public void hoverSmartBotmenu() {
 		try {
-		common.moveToElement(lblMenuSmartBot);
+		CommonMethods.getSingletonCommon().moveToElement(lblMenuSmartBot);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -127,7 +141,7 @@ public class CC_Home extends Base{
 	
 	public void hoverAdministrationmenu() {
 		try {
-		common.moveToElement(lblMenuAdministration);
+		CommonMethods.getSingletonCommon().moveToElement(lblMenuAdministration);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -136,7 +150,7 @@ public class CC_Home extends Base{
 	
 	public void hoverHelpmenu() {
 		try {
-		common.moveToElement(lblMenuHelp);
+		CommonMethods.getSingletonCommon().moveToElement(lblMenuHelp);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -145,7 +159,7 @@ public class CC_Home extends Base{
 	
 	public void hoverGoTo() {
 		try {
-		common.moveToElement(lblGoTo);
+		CommonMethods.getSingletonCommon().moveToElement(lblGoTo);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -154,7 +168,7 @@ public class CC_Home extends Base{
 	
 	public void clickddRobotCCAudit() {
 		try {
-		common.clickButton(ddMenuddRobotsCCAudit);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuddRobotsCCAudit);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -163,7 +177,7 @@ public class CC_Home extends Base{
 	
 	public void clickddRobotSchedule() {
 		try {
-		common.clickButton(ddMenuRobotsSchedule);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuRobotsSchedule);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -172,7 +186,7 @@ public class CC_Home extends Base{
 	
 	public void clickddRobotVault() {
 		try {
-		common.clickButton(ddMenuRobotsVault);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuRobotsVault);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -181,7 +195,7 @@ public class CC_Home extends Base{
 	
 	public void clickddProcessesRobotic() {
 		try {
-		common.clickButton(ddMenuProcessesRobotic);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuProcessesRobotic);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -190,7 +204,7 @@ public class CC_Home extends Base{
 	
 	public void clickddProcessesBusiness() {
 		try {
-		common.clickButton(ddMenuProcessesBusiness);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuProcessesBusiness);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -199,7 +213,7 @@ public class CC_Home extends Base{
 	
 	public void clickddProcessesRepository() {
 		try {
-		common.clickButton(ddMenuProcessesRepository);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuProcessesRepository);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -208,7 +222,7 @@ public class CC_Home extends Base{
 	
 	public void clickddMngmntRPADashboard() {
 		try {
-		common.clickButton(ddMenuMngmntRPADashboard);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuMngmntRPADashboard);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -218,7 +232,7 @@ public class CC_Home extends Base{
 	
 	public void clickddMngmntBusDashboard() {
 		try {
-		common.clickButton(ddMenuMngmntBusDashboard);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuMngmntBusDashboard);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -227,7 +241,7 @@ public class CC_Home extends Base{
 	
 	public void clickddMngmntRpts() {
 		try {
-		common.clickButton(ddMenuMngmntRpts);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuMngmntRpts);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -236,7 +250,7 @@ public class CC_Home extends Base{
 
 	public void clickddMenuSmartBotCVTmplt() {
 		try {
-		common.clickButton(ddMenuSmartBotCVTmplt);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuSmartBotCVTmplt);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -245,7 +259,7 @@ public class CC_Home extends Base{
 	
 	public void clickddMenuSmartBotCVTxtCls() {
 		try {
-		common.clickButton(ddMenuSmartBotCVTxtCls);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuSmartBotCVTxtCls);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -254,7 +268,7 @@ public class CC_Home extends Base{
 	
 	public void clickddMenuSmartBotEntyRec() {
 		try {
-		common.clickButton(ddMenuSmartBotEntyRec);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuSmartBotEntyRec);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -263,7 +277,7 @@ public class CC_Home extends Base{
 	
 	public void clickddMenuSmartBotPred() {
 		try {
-		common.clickButton(ddMenuSmartBotPred);
+		CommonMethods.getSingletonCommon().clickButton(ddMenuSmartBotPred);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 
@@ -272,7 +286,7 @@ public class CC_Home extends Base{
 	
 	public void clickddGoToControlPanel() {
 		try {
-		common.clickButton(ddGoToControlPanel);
+		CommonMethods.getSingletonCommon().clickButton(ddGoToControlPanel);
 		}
 		catch(InterruptedException e) { 
 			   Thread.currentThread().interrupt(); 

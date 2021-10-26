@@ -4,6 +4,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CC_SmartBot_ComputerVision {
+	
+	public static CC_SmartBot_ComputerVision smartbotCV = getSingletonsmartbotCV();
+	
+	public static CC_SmartBot_ComputerVision getSingletonsmartbotCV()
+	{
+	if (smartbotCV == null) {
+		synchronized (CC_SmartBot_ComputerVision.class) {
+			if (smartbotCV == null) {
+				smartbotCV = new CC_SmartBot_ComputerVision();// instance will be created at request time
+			}
+		}
+	}
+	return smartbotCV;
+}
 
 	@FindBy(css = ".btn.btn-primary.activeBtn")
 	WebElement templatesBtn;

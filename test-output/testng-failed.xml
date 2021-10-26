@@ -3,11 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Nividous.QA.ControlCenter.PageObjects.CC_Robots_Schedule">
+      <class name="com.Nividous.QA.ControlCenter.SmokeTestSuite">
         <methods>
-          <include name="addScheduleNow"/>
+          <include name="domConfiguration"/>
+          <include name="initializeSuite"/>
+          <include name="initDriver"/>
+          <include name="scheduleAdvanced_014"/>
         </methods>
-      </class> <!-- com.Nividous.QA.ControlCenter.PageObjects.CC_Robots_Schedule -->
+      </class> <!-- com.Nividous.QA.ControlCenter.SmokeTestSuite -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

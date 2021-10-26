@@ -4,6 +4,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CC_SmartBot_TextClassification {
+	
+	public static CC_SmartBot_TextClassification smartbotTxtCls = getSingletonsmartbotTxtCls();
+	
+	public static CC_SmartBot_TextClassification getSingletonsmartbotTxtCls()
+	{
+	if (smartbotTxtCls == null) {
+		synchronized (CC_SmartBot_TextClassification.class) {
+			if (smartbotTxtCls == null) {
+				smartbotTxtCls = new CC_SmartBot_TextClassification();// instance will be created at request time
+			}
+		}
+	}
+	return smartbotTxtCls;
+}
 
 	@FindBy(css = "#aui_3_4_0_1_449")
 	WebElement createTextClassifier;

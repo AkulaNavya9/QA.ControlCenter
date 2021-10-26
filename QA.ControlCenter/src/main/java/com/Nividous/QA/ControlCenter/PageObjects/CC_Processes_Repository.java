@@ -10,13 +10,27 @@ import testBase.Base;
 
 public class CC_Processes_Repository {
 
-	private static CommonMethods common = new CommonMethods();
-	
+
 	public CC_Processes_Repository()
 
 	{
 		PageFactory.initElements(Base.getDriver(), this);
 	}
+	
+	public static CC_Processes_Repository procrepo = getSingletonprocrepo();
+	
+	public static CC_Processes_Repository getSingletonprocrepo()
+	{
+	if (procrepo == null) {
+		synchronized (CC_Processes_Repository.class) {
+			if (procrepo == null) {
+				procrepo = new CC_Processes_Repository();// instance will be created at request time
+			}
+		}
+	}
+	return procrepo;
+}
+	
 		@FindBy ( id = "showScheduler")
 		WebElement uploadDraftProcessBtn;
 	

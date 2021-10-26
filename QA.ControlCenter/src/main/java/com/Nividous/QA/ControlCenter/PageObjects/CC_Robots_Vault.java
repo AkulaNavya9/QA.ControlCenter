@@ -4,6 +4,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CC_Robots_Vault {
+	
+	public static CC_Robots_Vault robvault = getSingletonrobvault();
+	
+	public static CC_Robots_Vault getSingletonrobvault()
+	{
+	if (robvault == null) {
+		synchronized (CC_Robots_Vault.class) {
+			if (robvault == null) {
+				robvault = new CC_Robots_Vault();// instance will be created at request time
+			}
+		}
+	}
+	return robvault;
+}
 
 	@FindBy(id = "txtIdentifierFilter")
 	WebElement  identifier;
